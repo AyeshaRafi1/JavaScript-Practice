@@ -5,14 +5,13 @@ const valuee = document.querySelector('.input');
 const taskBox=document.querySelector('.tasks');
 
 
-let tasks=false
 let count=1;
+let taskNum=0;
 console.log(valuee.value)
 
 
 // adding new tasks to the list on click of add task button
 addTaskBtn.addEventListener('click',function(){
-    console.log(valuee.value);
     const dT=new Date();
     // creating the required array
     const dateAndDay =`${dT.getMonth()+1}/${dT.getDate()}/${dT.getFullYear() } @ ${dT.getHours()}:${dT.getMinutes()}:${dT.getSeconds()}`
@@ -22,7 +21,7 @@ addTaskBtn.addEventListener('click',function(){
                 <div class="box-upper">
                     <div class="box-upper-left">
                         <i class="left fa fa-tasks"></i>
-                        ToDo 01 ${valuee.value}
+                        ToDo 0${count} ${valuee.value}
                     </div>
                     <div>
                         ${dateAndDay}
@@ -40,13 +39,14 @@ addTaskBtn.addEventListener('click',function(){
     count=count+1;
 
     // adding the html at appropriate places
-    if (tasks===false){
+    if (taskNum===0){
         taskBox.innerHTML="";
         taskBox.innerHTML=html;
-    tasks=true
+        taskNum=taskNum+1
     }
     else{
         taskBox.innerHTML=taskBox.innerHTML+html;
+        taskNum=taskNum+1
 }})
 
 // deleting a task
@@ -55,19 +55,20 @@ taskBox.addEventListener('click', function (e){
         const idd="b"+e.target.id[1]
         const elem= document.getElementById(idd);
         elem.parentNode.removeChild(elem)
-
+        taskNum=taskNum-1
+    }
+    if (taskNum===0){
+        taskBox.textContent="You currently do not have any tasks added";
     }
 
 })
 
-
-
 // marking a task as done
 taskBox.addEventListener('click', function (e){
-    console.log(e.target)
     if (e.target.classList.contains('fa-check')){
         const idd="b"+e.target.id[1]
         const elem= document.getElementById(idd);
+        elem.style.backgroundColor='lightgrey'
         
     }
 
