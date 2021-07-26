@@ -1,0 +1,129 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    margin:0;
+    padding:0;
+    background-color:rgb(64,81,182);
+    width:100%;
+    align-self: top;
+  }
+  nav ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    margin:0;
+    height: 60px;
+  }
+  nav ul li {
+    align-self: center;
+    list-style-type: none;
+    color: white;
+    font-size: small;
+    margin:0;
+    padding:15.5px 20px;
+  }
+  nav ul li:hover {
+    background-color:rgb(69,86,125);
+  }
+  nav ul li a{
+    text-decoration: none;
+    color: white;
+  }
+  
+  .big-text {
+    font-size: medium;
+    padding:12px 12px;
+  }
+  .add-tasks {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+  }
+  
+  textarea {
+    width: 40%;
+    text-decoration: none;
+    margin-top: 50px;
+    margin-bottom: 35px;
+  }
+
+  button {
+    padding: 9.5px;
+    text-decoration: none;
+    margin-top: 50px;
+    margin-bottom: 35px;
+    background-color: white;
+    border-width: 1px;
+
+  }
+
+  hr {
+    opacity: 0.5;
+    width: 45%;
+    margin: auto;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .tasks {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    margin-top: 35px;
+  }
+  .box {
+    width: 45%;
+    height: 150px;
+    border: rgb(64,81,182);
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  
+  .box-upper {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding-top: 15px;
+    padding-right: 15px;
+  }
+  .box-upper-left {
+      display: flex;
+  }
+  .box-upper-left i {
+      margin: 0px 15px;
+  }
+  .box-lower {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    margin-right: 15px;
+  }
+
+  .box-lower i {
+    margin: 4px;
+    padding:4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 3px;
+
+  }
+
+  i {
+    color: rgb(64,81,182);
+      
+  }
