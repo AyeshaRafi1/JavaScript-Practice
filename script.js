@@ -2,10 +2,8 @@
 
 const addTaskBtn = document.querySelector('.btn');
 const valuee = document.querySelector('.input');
-const Task_box=document.querySelector('.tasks');
-const edit=document.querySelector('.fa-pencil');
-const done=document.querySelector('.fa-check');
-const del = document.querySelector('.fa-remove');
+const taskBox=document.querySelector('.tasks');
+
 
 let tasks=false
 let count=1;
@@ -32,9 +30,9 @@ addTaskBtn.addEventListener('click',function(){
                 </div>
                 
                 <div class="box-lower">
-                    <i class="fa fa-pencil"></i> 
-                    <i class="fa fa-check"></i> 
-                    <i class="fa fa-remove"></i>
+                    <i class="fa fa-pencil" id="p${count}"></i> 
+                    <i class="fa fa-check" id="c${count}"></i> 
+                    <i class="fa fa-remove" id="r${count}"></i>
                 </div>
                  
             </div>`;
@@ -43,16 +41,35 @@ addTaskBtn.addEventListener('click',function(){
 
     // adding the html at appropriate places
     if (tasks===false){
-    Task_box.innerHTML="";
-    Task_box.innerHTML=html;
+        taskBox.innerHTML="";
+        taskBox.innerHTML=html;
     tasks=true
     }
     else{
-    Task_box.innerHTML=Task_box.innerHTML+html;
+        taskBox.innerHTML=taskBox.innerHTML+html;
 }})
 
-// marking a task as done
-done.addEventListener('click', function (){
+// deleting a task
+taskBox.addEventListener('click', function (e){
+    if (e.target.classList.contains('fa-remove')){
+        const idd="b"+e.target.id[1]
+        const elem= document.getElementById(idd);
+        elem.parentNode.removeChild(elem)
+
+    }
 
 })
 
+
+
+// marking a task as done
+taskBox.addEventListener('click', function (e){
+    console.log(e.target)
+    if (e.target.classList.contains('fa-check')){
+        const idd="b"+e.target.id[1]
+        const elem= document.getElementById(idd);
+        
+    }
+
+})
+ 
