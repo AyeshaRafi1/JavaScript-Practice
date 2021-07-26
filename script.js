@@ -6,15 +6,17 @@ const addTaskBtn = document.querySelector('.btn');
 const valuee = document.querySelector('.input');
 const taskBox=document.querySelector('.tasks');
 
-
 let Data="";
-let taskNum= localStorage.length ? Number(localStorage.getItem(localStorage.key(localStorage.length-1))[22]):0;
-console.log(localStorage.getItem(localStorage.key(localStorage.length))[22])
+let taskNum= localStorage.length ? Math.max(...Object.keys(localStorage))+1:1;
 console.log(localStorage.length)
+console.log(localStorage)
+console.log(taskNum)
 let numItems=0;
 
+
 //calculating length of non null values in local storage also creating the inner html code for the taskbox
-for (let i = 0; i < taskNum; i++) {
+for (let i = 1; i <= taskNum; i++) {
+    localStorage.getItem(i)
     if (localStorage.getItem(i)!==null){
         Data=Data+localStorage.getItem(i);
         numItems=numItems+1
@@ -34,7 +36,9 @@ else{
 
 // adding new tasks to the list on click of add task button
 addTaskBtn.addEventListener('click',function(){
+
     const dT=new Date();
+
     // creating the required array
     const dateAndDay =`${dT.getMonth()+1}/${dT.getDate()}/${dT.getFullYear() } @ ${dT.getHours()}:${dT.getMinutes()}:${dT.getSeconds()}`
 
@@ -61,8 +65,9 @@ addTaskBtn.addEventListener('click',function(){
     localStorage.setItem(taskNum, html)
             
     console.log(taskNum)
+
     // adding the html at appropriate places
-    if (taskNum===0){
+    if (taskNum===1){
         taskBox.innerHTML="";
         taskBox.innerHTML=html;
         taskNum=taskNum+1
@@ -76,21 +81,25 @@ addTaskBtn.addEventListener('click',function(){
 
 // deleting a task
 taskBox.addEventListener('click', function (e){
+
     if (e.target.classList.contains('fa-remove')){
+
         const idd="b"+e.target.id[1]
         const elem= document.getElementById(idd);
         elem.parentNode.removeChild(elem)
+
         console.log(e.target.id[1])
+
         localStorage.removeItem(e.target.id[1])
+        console.log("......................")
+        console.log(taskNum)
+        taskNum= Math.max(...Object.keys(localStorage))+1
+        console.log(taskNum)
+
     }
     if (taskNum===0){
         taskBox.textContent="You currently do not have any tasks added";
     }
-    console.log("......................")
-    console.log(taskNum)
-    taskNum= Number(localStorage.getItem(localStorage.key(localStorage.length-1))[22])
-    console.log(taskNum)
-    
 
 })
 
@@ -99,9 +108,14 @@ taskBox.addEventListener('click', function (e){
     if (e.target.classList.contains('fa-check')){
         const idd="b"+e.target.id[1]
         const elem= document.getElementById(idd);
-        elem.style.backgroundColor='lightgrey'
-        
+        elem.classList.add("donee")
+        // const outer= document.createElement('div');
+        // outer.classList.add("box")
+        // outer.classList.add("donee")
+        // outer.id=idd;
+        // outer.innerHTML=elem.innerHTML
+        // localStorage.setItem(e.target.id[1], outer)
+        // console.log(outer)    
     }
-
 })
  
