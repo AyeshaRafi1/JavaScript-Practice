@@ -56,10 +56,10 @@ nav {
 
   button {
     padding: 9.5px;
-    text-decoration: none;
+    /*text-decoration: none;*/
     margin-top: 50px;
     margin-bottom: 35px;
-    background-color: white;
+    /* background-color: white; */
     border-width: 1px;
 
   }
