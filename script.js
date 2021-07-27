@@ -8,9 +8,6 @@ const taskBox=document.querySelector('.tasks');
 
 let Data="";
 let taskNum= localStorage.length ? Math.max(...Object.keys(localStorage))+1:1;
-console.log(localStorage.length)
-console.log(localStorage)
-console.log(taskNum)
 let numItems=0;
 
 
@@ -64,8 +61,6 @@ addTaskBtn.addEventListener('click',function(){
 
     localStorage.setItem(taskNum, html)
             
-    console.log(taskNum)
-
     // adding the html at appropriate places
     if (taskNum===1){
         taskBox.innerHTML="";
@@ -94,10 +89,14 @@ taskBox.addEventListener('click', function (e){
         console.log("......................")
         console.log(taskNum)
         taskNum= Math.max(...Object.keys(localStorage))+1
-        console.log(taskNum)
+        console.log(typeof taskNum)
+        if (taskNum=='-Infinity')
+        {
+            taskNum=1
+        }
 
     }
-    if (taskNum===0){
+    if (taskNum===1){
         taskBox.textContent="You currently do not have any tasks added";
     }
 
