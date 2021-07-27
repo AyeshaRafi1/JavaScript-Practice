@@ -79,17 +79,18 @@ taskBox.addEventListener('click', function (e){
 
     if (e.target.classList.contains('fa-remove')){
 
+        //getting the id of the parent element and then selecting that element
         const idd="b"+e.target.id[1]
         const elem= document.getElementById(idd);
+
+        // removing that element from html and local storage
         elem.parentNode.removeChild(elem)
-
-        console.log(e.target.id[1])
-
         localStorage.removeItem(e.target.id[1])
-        console.log("......................")
-        console.log(taskNum)
+
+        //getting the max number box that is stored in the local storage
         taskNum= Math.max(...Object.keys(localStorage))+1
-        console.log(typeof taskNum)
+
+        // if there is nothing in local storage then setting task num to 1
         if (taskNum=='-Infinity')
         {
             taskNum=1
@@ -105,16 +106,23 @@ taskBox.addEventListener('click', function (e){
 // marking a task as done
 taskBox.addEventListener('click', function (e){
     if (e.target.classList.contains('fa-check')){
+        // getting id of the parent div of this check sign
         const idd="b"+e.target.id[1]
         const elem= document.getElementById(idd);
+
+        // adding the class that sets the colour to grey
         elem.classList.add("donee")
-        // const outer= document.createElement('div');
-        // outer.classList.add("box")
-        // outer.classList.add("donee")
-        // outer.id=idd;
-        // outer.innerHTML=elem.innerHTML
-        // localStorage.setItem(e.target.id[1], outer)
-        // console.log(outer)    
+
+        // getting the html of this that was stored in local storage
+        const htmll=localStorage.getItem(e.target.id[1])
+        let html =htmll.split(" ")
+        
+        //updating that html
+        html[1]='class="box donee"'
+        const final=html.join(" ")
+
+        // updating the html in local storage
+        localStorage.setItem(e.target.id[1], final)
     }
 })
  
