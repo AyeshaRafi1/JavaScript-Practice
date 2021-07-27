@@ -12,7 +12,7 @@ let numItems=0;
 
 
 //calculating length of non null values in local storage also creating the inner html code for the taskbox
-for (let i = 1; i <= taskNum; i++) {
+for (let i = taskNum; i >0; i--) {
     localStorage.getItem(i)
     if (localStorage.getItem(i)!==null){
         Data=Data+localStorage.getItem(i);
@@ -60,6 +60,7 @@ addTaskBtn.addEventListener('click',function(){
             </div>`;
 
     localStorage.setItem(taskNum, html)
+    valuee.value="";
             
     // adding the html at appropriate places
     if (taskNum===1){
@@ -68,7 +69,7 @@ addTaskBtn.addEventListener('click',function(){
         taskNum=taskNum+1
     }
     else{
-        taskBox.innerHTML=taskBox.innerHTML+html;
+        taskBox.innerHTML=html+taskBox.innerHTML;
         taskNum=taskNum+1
 }
 
@@ -111,14 +112,21 @@ taskBox.addEventListener('click', function (e){
         const elem= document.getElementById(idd);
 
         // adding the class that sets the colour to grey
-        elem.classList.add("donee")
+        elem.classList.toggle("donee")
 
         // getting the html of this that was stored in local storage
         const htmll=localStorage.getItem(e.target.id[1])
         let html =htmll.split(" ")
         
         //updating that html
-        html[1]='class="box donee"'
+        if (elem.classList.contains("donee")){
+            html[1]='class="box donee"'
+
+        }
+        else {
+            html[1]='class="box"'
+        }
+        
         const final=html.join(" ")
 
         // updating the html in local storage

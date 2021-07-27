@@ -83,6 +83,9 @@ nav {
     border-width: 1px;
 
   }
+  button:hover {
+    cursor: pointer;
+  }
 
   hr {
     opacity: 0.5;
@@ -174,6 +177,9 @@ nav {
   i {
     color: rgb(64,81,182);
       
+  }
+  i:hover {
+    cursor: pointer;
   }
   .donee {
       background-color: lightgray;
